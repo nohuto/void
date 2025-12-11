@@ -1,6 +1,6 @@
 # Void Obfuscation
 
-'Void' obfuscation or more likely binary obfuscation. I created it as I always wanted my own script, which is able to create a empty looking file. It uses the [minifier](https://github.com/5Noxi/PowerShell-Minifier) by default. `Input File` is mandatory, if the `Output File` path isn't set, it'll use the current file name and adds `NV-`.
+'Void' obfuscation or more likely binary obfuscation. I created it as I always wanted my own script, which is able to create a empty looking file. It uses the [minifier](https://github.com/nohuto/PowerShell-Minifier) by default. `Input File` is mandatory, if the `Output File` path isn't set, it'll use the current file name and adds `NV-`.
 
 Preview (not up to date):
 

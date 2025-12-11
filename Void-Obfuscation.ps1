@@ -15,7 +15,7 @@
 $nv = "Authored by Nohuxi"
 $erroractionpreference = "stop"
 $progresspreference = "silentlycontinue"
-if (!(Test-Path "$env:temp\Noverse.ico")) {iwr -uri "https://github.com/5Noxi/5Noxi/releases/download/Logo/Noverse.ico" -out "$env:temp\Noverse.ico"}
+if (!(Test-Path "$env:temp\Noverse.ico")) {iwr -uri "https://github.com/nohuto/nohuto/releases/download/Logo/Noverse.ico" -out "$env:temp\Noverse.ico"}
 
 function log {
     param ([string]$HighlightMessage, [string]$Message, [string]$Sequence = '',[ConsoleColor]$TimeColor = 'DarkGray', [ConsoleColor]$HighlightColor = 'White', [ConsoleColor]$MessageColor = 'White', [ConsoleColor]$SequenceColor = 'White')
@@ -106,11 +106,11 @@ function nvvoid{
     $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
     log "[~]" "Reading content" -HighlightColor Gray
     $code = [System.IO.File]::ReadAllText($nvi)
-    log "[~]" "Removing comments" -HighlightColor Gray # https://github.com/5noxi/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Core/About/about_Comments.md
+    log "[~]" "Removing comments" -HighlightColor Gray # https://github.com/nohuto/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Core/About/about_Comments.md
     $code = comments -code ($code -join "`n")
     $code = $code | ? { $_ -notmatch '^#' }
 
-    log "[~]" "Replacing parameters" -HighlightColor Gray # https://github.com/5noxi/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Core/About/about_CommonParameters.md
+    log "[~]" "Replacing parameters" -HighlightColor Gray # https://github.com/nohuto/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Core/About/about_CommonParameters.md
     $paramalias = @{
         '-Verbose' = '-vb'
         '-Debug' = '-db'
@@ -127,7 +127,7 @@ function nvvoid{
         '-Confirm' = '-cf'
         '-LiteralPath' = '-PSPath'
         '-Nonewline' = '-nonew'
-        '-not' = '!' # https://github.com/5noxi/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Core/About/about_Logical_Operators.md
+        '-not' = '!' # https://github.com/nohuto/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Core/About/about_Logical_Operators.md
     }
     foreach ($param in $paramalias.GetEnumerator()) {
         $pattern = '(?<=^|\s|\(|\{|\[)' + [regex]::Escape($param.Key) + '(?=\s|$|\)|\}|;)'
@@ -164,7 +164,7 @@ function nvvoid{
     }
     log "[+]" "Content removed" -HighlightColor Green
 
-    log "[~]" "Replacing commands" -HighlightColor Gray # https://github.com/5noxi/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Utility/Get-Alias.md
+    log "[~]" "Replacing commands" -HighlightColor Gray # https://github.com/nohuto/PowerShell-Docs/blob/main/reference/7.5/Microsoft.PowerShell.Utility/Get-Alias.md
     $code = $code -replace '\bWrite-Host\b', 'nvwh'
     $code=$code -replace 'Write-Host\s*"(\s*)"', 'echo ""'
     $aliast = @{
